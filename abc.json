@@ -1,0 +1,14 @@
+{
+    "name": "spotlight",
+    "version": "1.2",
+    "desc": "",
+    "cover": "",
+    "tag":"spotlight,引导动画,guide",
+    "author": {
+        "name": "隐若",
+        "email": "yinruo.nyj@taobao.com",
+        "page": ""
+    },
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
+}

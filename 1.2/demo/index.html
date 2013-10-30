@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>spotlight的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.3.0/kissy-min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/css/dpl/base-min.css">
+</head>
+<body>
+<h2>spotlight的demo</h2>
+<div>
+    <p>
+        <a href='spotlight-taobao-home.html' target='_blank'>taobao 首页导航</a>
+    </p>
+    <p>
+        <a href='flash-focus.html' target='_blank'>优酷关灯</a>
+    </p>
+    <p>
+        <a href='next-prev.html' target='_blank'>通用导航</a>
+    </p>
+    <p>
+        <a href='next-prev-blink.html' target='_blank'>边框聚焦提醒</a>
+    </p>
+</div>
+
+<script>
+    var S = KISSY;
+    if (S.Config.debug) {
+        var srcPath = "../../../";
+        S.config({
+            packages:[
+                {
+                    name:"gallery",
+                    path:srcPath,
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
+        });
+    }
+
+    S.use('gallery/spotlight/1.2/index', function (S, Spotlight) {
+          new Spotlight();
+    })
+</script>
+</body>
+</html>
