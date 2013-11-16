@@ -371,11 +371,11 @@ KISSY.add('gallery/spotlight/1.3/index',function (S, DOM, Node, Event, JSON ) {
             var me = this
                 , nodeHeight = DOM.height(node)
                 , boxOpt = me._getMaskBoxSize(node, inlineCfg.maskPadding )
-                , offset = DOM.offset(node)
+                , offset = me.getFocusOffset()
                 , top = offset.top
                 , vHeight = DOM.viewportHeight()
                 , scrollTop = DOM.scrollTop()
-                , notVisible = top > (vHeight + scrollTop)
+                , notVisible = top + offset.height > (vHeight + scrollTop) ||  top < scrollTop
                 ;
             (notVisible || (scrollTop > nodeHeight + top)) && Node.one(window).animate({scrollTop: top - nodeHeight}, .2)
             me._alignToBox(boxOpt, isAnim ? me.config.anim.duration : false);
