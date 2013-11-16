@@ -1,4 +1,4 @@
-KISSY.add(function (S, DOM, Event, JSON ) {
+KISSY.add(function (S, DOM, Node, Event, JSON ) {
 
     /**
      * 事件列表
@@ -50,7 +50,8 @@ KISSY.add(function (S, DOM, Event, JSON ) {
         , clickOnHide: true//点击空白处隐藏mask
         , lastOnEnd: true//到达最后一个之后 如果在执行next的话 会清除mask
         , resizeBuffer: 50//窗口resize事件的时候缓冲执行适应函数的时间
-        , clickOnHideTip: '', toggleOnAnim: false//上一个下一个切换的时候是否为动画形式
+        , clickOnHideTip: ''
+        , toggleOnAnim: false//上一个下一个切换的时候是否为动画形式
         , focusBorder: null//显示焦点的时候在周围添加边框的配置
         , listeners: null
     };
@@ -161,6 +162,11 @@ KISSY.add(function (S, DOM, Event, JSON ) {
             return S.merge( S.clone( this.config || SpotlightConfig ), cfg );
         },
 
+        /**
+         * 重新渲染mask的样式
+         * @param style
+         * @private
+         */
         _reloadMaskStyle: function( style ){
             if( style.bgColor ){
                 style.backgroundColor = style.bgColor;
@@ -365,7 +371,7 @@ KISSY.add(function (S, DOM, Event, JSON ) {
                 , scrollTop = DOM.scrollTop()
                 , notVisible = top > (vHeight + scrollTop)
                 ;
-            (notVisible || (scrollTop > nodeHeight + top)) && S.one(window).animate({scrollTop: top - nodeHeight}, .2)
+            (notVisible || (scrollTop > nodeHeight + top)) && Node.one(window).animate({scrollTop: top - nodeHeight}, .2)
             me._alignToBox(boxOpt, isAnim ? me.config.anim.duration : false);
             this.fire(EVENT_FOCUSTO, {nodeTarget: node, offset: offset, index: index});
         },
@@ -387,6 +393,14 @@ KISSY.add(function (S, DOM, Event, JSON ) {
         },
 
         /**
+         * 获取当前焦点的offset信息
+         * @returns {*|{}}
+         */
+        getFocusOffset: function(){
+            return this.offset || {};
+        },
+
+        /**
          * 获取当前聚焦对象
          * @returns {*}
          */
@@ -401,5 +415,5 @@ KISSY.add(function (S, DOM, Event, JSON ) {
     });
     return Spotlight;
 }, { requires: [
-    'dom', 'event', 'json'
+    'dom', 'node', 'event', 'json'
 ]});
