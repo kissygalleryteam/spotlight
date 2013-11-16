@@ -24,6 +24,7 @@ spotlight是 KISSY 聚光灯组件（引导动画）。
         opacity: .5,
         maskCls: 'spotlight-mask',
         // 默认的focus区域是目标元素的outerWidth（以及outerHeight），但是可以通过maskPadding来扩展边缘
+        // 当设计师要求的聚焦区域和实际节点占用的区域不一致时特别有用
         maskPadding: {
             top: 0,
             bottom: 0,
@@ -48,6 +49,14 @@ spotlight是 KISSY 聚光灯组件（引导动画）。
             // 'render'
             // 'focusTo'
     };
+
+#### 行内配置
+
+如果需要每个焦点节点的展现不同，可以在节点中通过`data-config`属性来控制，不过仅限几个和样式相关的属性：
+
+```
+<div data-config="{'maskPadding':{'top':40,'left':22,'right':22,'bottom':40}}">...</div>
+```
 
 ### 方法
 
